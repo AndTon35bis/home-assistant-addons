@@ -1,0 +1,21 @@
+name: Sync fork
+
+on:
+  schedule:
+    - cron: "0 * * * *"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Sync fork
+        uses: repo-sync/github-sync@v2
+        with:
+          source_repo: "boomam/home-assistant-addons"
+          source_branch: "master"
+          destination_branch: "master"
